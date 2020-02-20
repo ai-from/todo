@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import mNotes from './modules/mNotes'
+import mModal from './modules/mModal'
+
 export default new Vuex.Store({
   state: {
   },
@@ -10,6 +13,10 @@ export default new Vuex.Store({
   },
   actions: {
   },
+  getters: {
+  },
   modules: {
+    mNotes,
+    mModal
   }
 })

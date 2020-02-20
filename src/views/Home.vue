@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home indent">
+    <vNotes />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import vNotes from '@/components/home/v-notes'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    vNotes
   }
 }
 </script>
+
+<style lang="sass">
+  .home
+    .create
+      margin-bottom: 40px
+</style>

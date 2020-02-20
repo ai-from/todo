@@ -1,0 +1,40 @@
+@import "variables"
+
+*
+  box-sizing: border-box
+
+html, body
+  margin: 0
+  padding: 0
+  font-family: monospace, Arial, sans-serif
+  font-size: 16px
+
+#app
+  display: grid
+  min-height: 100vh
+  grid-template-rows: min-content 1fr min-content
+  width: 100%
+  min-width: 1300px
+  max-width: 1366px
+  margin: 0 auto
+
+.indent
+  padding: 0 50px
+
+a
+  color: $gray
+  &:hover
+    color: rgba($gray, .5)
+  &.router-link-active
+    color: $green
+
+input[type='text']
+  height: 30px
+  border-radius: 4px
+  border: 1px solid $gray
+  box-shadow: none
+  padding: 0 10px
+  width: 200px
+  outline: none
+  &:focus
+    border: 1px solid $green
