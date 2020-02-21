@@ -14,7 +14,7 @@ html, body
   min-height: 100vh
   grid-template-rows: min-content 1fr min-content
   width: 100%
-  min-width: 1300px
+  min-width: 320px
   max-width: 1366px
   margin: 0 auto
 
@@ -38,3 +38,7 @@ input[type='text']
   outline: none
   &:focus
     border: 1px solid $green
+
+@media screen and (max-width: 575px)
+  .indent
+    padding: 0 16px

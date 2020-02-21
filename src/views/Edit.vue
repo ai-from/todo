@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import vEdit from '@/components/create/v-edit'
+import vEdit from '@/components/edit/v-edit'
 import {mapActions} from 'vuex'
 
 export default {

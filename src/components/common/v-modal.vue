@@ -31,6 +31,9 @@
 
 <script>
 import {mapState, mapActions, mapGetters} from 'vuex'
+import axios from 'axios'
+import consts from '@/consts'
+
 export default {
   name: "v-modal",
   data(){
@@ -60,6 +63,10 @@ export default {
       this.SET_NOTE_TO_DELETE_ID(0)
     },
     deleteNote(){
+        // delete from db.json
+        axios.delete(consts.API_URL_NOTES + '/' + this.noteToDeleteId)
+          .then((res) => {})
+          .catch((err) => {console.log('err: ', err)})
         this.DELETE_NOTE_BY_ID(this.noteToDeleteId)
         this.SET_MODAL(false)
         if(this.$route.path !== '/'){

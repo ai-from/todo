@@ -25,7 +25,7 @@
 
 <script>
 
-import {mapState, mapActions} from 'vuex'
+import {mapState} from 'vuex'
 import vNote from '@/components/home/v-note'
 import vPagination from '@/components/common/v-pagination'
 
@@ -51,9 +51,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-        'EXPAND_NOTES'
-    ]),
     pageChange (index){
       this.startFrom = index * this.itemsOnPage
     }
@@ -83,4 +80,13 @@ export default {
       grid-template-columns: repeat(3, min-content)
       justify-content: space-between
       grid-gap: 50px
+  @media screen and (max-width: 1050px)
+    .v-notes
+      .notes_items
+        grid-template-columns: repeat(2, min-content)
+  @media screen and (max-width: 750px)
+    .v-notes
+      .notes_items
+        grid-template-columns: min-content
+        justify-content: center
 </style>

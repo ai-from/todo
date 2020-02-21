@@ -45,4 +45,13 @@ export default {
         white-space: nowrap
       .create
         margin-left: auto
+  @media screen and (max-width: 575px)
+    .v-header
+      .header_inner
+        grid-template-columns: unset
+        grid-template-rows: repeat(2, min-content)
+        justify-items: center
+        grid-gap: 10px
+        .create
+          margin-left: unset
 </style>

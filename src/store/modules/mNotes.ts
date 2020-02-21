@@ -3,251 +3,12 @@ export default {
     editingNote: {},
     isEditMode: false,
     noteToDeleteId: 0,
-    notes: [
-      {
-        id: 1,
-        title: 'Планы на весну',
-        todos: [
-          {
-            name: 'Съездить в Москву',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'Планы на лето',
-        todos: [
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: false
-          },
-          {
-            name: 'Съездить в Москву',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 3,
-        title: 'Планы на июнь',
-        todos: [
-          {
-            name: 'Съездить в Казань',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Оренбург',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 4,
-        title: 'Планы на июль',
-        todos: [
-          {
-            name: 'Съездить в Сочи',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 5,
-        title: 'Планы на август',
-        todos: [
-          {
-            name: 'Съездить в Липецк',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 6,
-        title: 'Планы на сентябрь',
-        todos: [
-          {
-            name: 'Съездить в Тверь',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      },
-      {
-        id: 7,
-        title: 'Планы на октябрь',
-        todos: [
-          {
-            name: 'Съездить в Тюмень',
-            checked: false
-          },
-          {
-            name: 'Съездить в Санкт-Петербург',
-            checked: true
-          },
-          {
-            name: 'Какое-то очень длинное название, никак не связанное с поездками по городам мира',
-            checked: true
-          },
-          {
-            name: 'Съездить в Нижний Новгород',
-            checked: true
-          },
-          {
-            name: 'Съездить в Казань',
-            checked: true
-          },
-          {
-            name: 'Купить много яблок',
-            checked: true
-          },
-          {
-            name: 'И апельсинов тоже побольше набрать',
-            checked: true
-          }
-        ]
-      }
-    ]
+    notes: []
   },
   mutations: {
-    // SET_NOTES(state: any, load: any){
-    //   state.notes = load
-    // },
+    SET_NOTES(state: any, load: any){
+      state.notes = load
+    },
     SET_EDIT_MODE(state: any, load: boolean){
       state.isEditMode = load
     },
@@ -272,9 +33,9 @@ export default {
     }
   },
   actions: {
-    // SET_NOTES({commit}: any, load: any){
-    //   commit('SET_NOTES', load)
-    // },
+    SET_NOTES({commit}: any, load: any){
+      commit('SET_NOTES', load)
+    },
     SET_EDIT_MODE({commit}: any, load: boolean){
       commit('SET_EDIT_MODE', load)
     },
@@ -298,13 +59,6 @@ export default {
     GET_NOTE_TITLE_BY_ID: (state: any) => (id: number) => {
       let arr = state.notes.filter((item: any) => {return item.id === id})
       return arr[0].title
-    },
-    GET_NOTE_BY_ID: (state: any) => (id: number) => {
-      let arr = state.notes.filter((item: any) => {return item.id === id})
-      return arr[0]
-    },
-    GET_NOTES(state: any){
-      return state.notes
     }
   }
 }

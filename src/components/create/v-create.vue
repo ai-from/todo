@@ -6,11 +6,10 @@
     <div class="form">
 
       <div class="head">
-        <label for="note_name">Заголовок</label>
+        <label>Заголовок</label>
         <input
             v-model="newNote.title"
             type="text"
-            id="note_name"
             placeholder="Введите название"
         >
       </div> <!-- head -->
@@ -64,6 +63,9 @@
 
 <script>
 import {mapState, mapActions} from 'vuex'
+import axios from 'axios'
+import consts from '@/consts'
+import removeEmptyFields from '@/mixins/removeEmptyFields'
 
 export default {
   name: "v-create",
@@ -79,6 +81,9 @@ export default {
       }
     }
   },
+  mixins: [
+    removeEmptyFields
+  ],
   computed: {
     ...mapState({
       notes: state => state.mNotes.notes
@@ -102,10 +107,7 @@ export default {
     createNote(){
       if (this.newNote.title.length > 0){
         // remove empty fields
-        let arr = this.newNote.todos
-        this.newNote.todos.forEach(function(todo, i, arr){
-          if (todo.name.length === 0){arr.splice(i, 1)}
-        })
+        this.removeEmptyFields(this.newNote.todos)
 
         // create id
         this.newNote.id = this.notes.length ? parseInt(this.notes[this.notes.length - 1].id) + 1 : 1
@@ -115,8 +117,13 @@ export default {
           title: this.newNote.title,
           todos: this.newNote.todos
         }
+        // add to vuex
         this.ADD_NEW_NOTE(load)
         this.refreshData()
+        // add to db.json
+        axios.post(consts.API_URL_NOTES, load)
+            .then((res) => {})
+            .catch((err) => {console.log('err: ', err)})
 
       }
     }
@@ -157,4 +164,7 @@ export default {
           display: grid
           grid-template-columns: repeat(2, min-content)
           grid-gap: 10px
+  @media screen and (max-width: 400px)
+    .v-create .form .content .buttons
+      grid-template-columns: repeat(2, 1fr)
 </style>

@@ -78,4 +78,9 @@ export default {
           background: $errorLight
         &:active
           background: $errorDark
+  @media screen and (max-width: 400px)
+    .v-button
+      button
+        padding: 10px 25px
+        width: 100%
 </style>

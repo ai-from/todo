@@ -1,0 +1,242 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Планы на март",
+      "todos": [
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Планы на апрель",
+      "todos": [
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Планы на май",
+      "todos": [
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Планы на июнь",
+      "todos": [
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Планы на июль",
+      "todos": [
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Планы на август",
+      "todos": [
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        },
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Планы на сентябрь",
+      "todos": [
+        {
+          "name": "Посетить Нижний Новгород",
+          "checked": false
+        },
+        {
+          "name": "Посетить Москву",
+          "checked": false
+        },
+        {
+          "name": "Посетить Санкт-Петербург",
+          "checked": false
+        },
+        {
+          "name": "Посетить Воронеж",
+          "checked": false
+        },
+        {
+          "name": "Посетить Казань",
+          "checked": false
+        },
+        {
+          "name": "Посетить Сочи",
+          "checked": false
+        },
+        {
+          "name": "Посетить Омск",
+          "checked": false
+        }
+      ]
+    }
+  ]
+}

@@ -6,11 +6,10 @@
       <div class="form" v-if="localNote">
 
         <div class="head">
-          <label for="note_name">Заголовок</label>
+          <label>Заголовок</label>
           <input
               v-model="localNote.title"
               type="text"
-              id="note_name"
               placeholder="Введите название"
           >
         </div> <!-- head -->
@@ -87,6 +86,9 @@
 <script>
 import vCreate from '@/components/create/v-create'
 import {mapState, mapActions} from 'vuex'
+import axios from 'axios'
+import consts from '@/consts'
+import removeEmptyFields from '@/mixins/removeEmptyFields'
 
 export default {
   name: "v-edit",
@@ -96,13 +98,17 @@ export default {
       localNote: null
     }
   },
+  mixins: [
+    removeEmptyFields
+  ],
   components: {
     vCreate
   },
   computed: {
       ...mapState({
         isEditMode: state => state.mNotes.isEditMode,
-        editingNote: state => state.mNotes.editingNote
+        editingNote: state => state.mNotes.editingNote,
+        notes: state => state.mNotes.notes
       })
   },
   methods: {
@@ -111,6 +117,11 @@ export default {
         'SET_NOTE_TO_DELETE_ID',
         'SET_MODAL'
     ]),
+    editItemInDB(){
+      axios.put(consts.API_URL_NOTES + '/' + this.localNote.id, this.localNote)
+          .then((res) => {})
+          .catch((err) => {console.log('err: ', err)})
+    },
     addTodo() {
       this.localNote.todos.push({name: '', checked: false})
     },
@@ -120,14 +131,15 @@ export default {
     saveNote(){
       if (this.localNote.title.length > 0){
         // remove empty fields
-        let arr = this.localNote.todos
-        this.localNote.todos.forEach(function(todo, i, arr){
-          if (todo.name.length === 0){arr.splice(i, 1)}
-        })
+        this.removeEmptyFields(this.localNote.todos)
+
         this.UPDATE_NOTE(this.localNote)
         localStorage.clear()
         let parsed = JSON.stringify(this.localNote);
         localStorage.setItem('startState', parsed);
+        // edit db.json
+        this.editItemInDB()
+        this.$router.push({name: 'home'})
       }
     },
     deleteNote(){
@@ -136,7 +148,9 @@ export default {
     },
     cancelChanges(){
       this.localNote = JSON.parse(localStorage.getItem('startState'))
-      this.saveNote()
+      this.UPDATE_NOTE(this.localNote)
+      // edit db.json
+      this.editItemInDB()
     }
   },
   mounted(){
@@ -181,4 +195,7 @@ export default {
           .v-button
             button
               width: 100%
+  @media screen and (max-width: 400px)
+    .v-edit .form .content .buttons
+      grid-template-columns: repeat(2, 1fr)
 </style>
