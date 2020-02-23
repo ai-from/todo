@@ -1,6 +1,6 @@
 <template>
   <div class="error indent">
-    <h1>Страница не найдена</h1>
+    <p class="notification">Страница не найдена</p>
   </div>
 </template>
 

@@ -17,7 +17,7 @@
     </template>
 
     <template v-else>
-      <p>Не найдено ни одной заметки</p>
+      <p class="notification">Не найдено ни одной заметки</p>
     </template>
 
   </div>
@@ -25,7 +25,7 @@
 
 <script>
 
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 import vNote from '@/components/home/v-note'
 import vPagination from '@/components/common/v-pagination'
 
@@ -51,6 +51,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+        'UPDATE_NOTE'
+    ]),
     pageChange (index){
       this.startFrom = index * this.itemsOnPage
     }

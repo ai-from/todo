@@ -11,6 +11,9 @@ export default {
   name: 'Home',
   components: {
     vNotes
+  },
+  mounted(){
+    localStorage.clear()
   }
 }
 </script>

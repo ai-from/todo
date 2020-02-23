@@ -6,7 +6,7 @@
         name="times"
         class="delete"
         title="Удалить"
-        @click="deleteNote(`${note.id}`)"
+        @click="deleteNote"
     />
     <div class="inner">
       <div class="title">{{ this.note.title }}</div>
@@ -68,20 +68,18 @@ export default {
       ...mapActions([
           'SET_EDIT_MODE',
           'SET_EDITING_NOTE',
-          'SET_MODAL',
-          'SET_NOTE_TO_DELETE_ID'
+          'SHOW_MODAL'
       ]),
     editNote(){
       this.$router.push({name: 'edit'})
       this.SET_EDIT_MODE(true)
       this.SET_EDITING_NOTE(this.note)
-      let parsed = JSON.stringify(this.note);
-      localStorage.setItem('startState', parsed);
+      let parsed = JSON.stringify(this.note)
+      localStorage.setItem('startState', parsed)
+      localStorage.setItem('endState', parsed)
     },
-    deleteNote(id){
-        this.SET_MODAL(true)
-        id = Math.floor(parseInt(id))
-        this.SET_NOTE_TO_DELETE_ID(id)
+    deleteNote(){
+        this.SHOW_MODAL({mode: 'deleteNote', obj: this.note})
     }
   }
 }
@@ -111,9 +109,9 @@ export default {
         text-overflow: ellipsis
       .todos
         margin-bottom: 20px
-        height: 128px
-        min-height: 128px
-        max-height: 128px
+        height: 140px
+        min-height: 140px
+        max-height: 140px
         overflow: hidden
         .todo
           display: grid

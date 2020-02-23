@@ -7,11 +7,26 @@
 
       <div class="head">
         <label>Заголовок</label>
-        <input
-            v-model="newNote.title"
-            type="text"
-            placeholder="Введите название"
-        >
+        <div class="wrap">
+          <input
+              v-model="newNote.title"
+              type="text"
+              placeholder="Введите название"
+              @input="changeEndState"
+          >
+          <v-icon
+              name="undo-alt"
+              class="icon undoItem"
+              title="Отменить"
+              @click="undoTitle"
+          />
+          <v-icon
+              name="redo-alt"
+              class="icon redoItem"
+              title="Вернуть"
+              @click="redoTitle"
+          />
+        </div>
       </div> <!-- head -->
 
       <div class="content">
@@ -26,6 +41,19 @@
                 type="text"
                 v-model="todo.name"
                 placeholder="Введите название"
+                @input="changeEndState"
+            />
+            <v-icon
+                name="undo-alt"
+                class="icon undoItem"
+                title="Отменить"
+                @click="undoItem(index)"
+            />
+            <v-icon
+                name="redo-alt"
+                class="icon redoItem"
+                title="Вернуть"
+                @click="redoItem(index)"
             />
             <input
                 type="checkbox"
@@ -35,7 +63,7 @@
             <v-icon
                 name="minus"
                 @click="deleteTodo(index)"
-                class="removeItem"
+                class="icon removeItem"
                 title="Удалить"
             />
           </div>
@@ -63,9 +91,8 @@
 
 <script>
 import {mapState, mapActions} from 'vuex'
-import axios from 'axios'
-import consts from '@/consts'
 import removeEmptyFields from '@/mixins/removeEmptyFields'
+import updateRemoteDatabase from '@/mixins/updateRemoteDatabase'
 
 export default {
   name: "v-create",
@@ -82,7 +109,8 @@ export default {
     }
   },
   mixins: [
-    removeEmptyFields
+    removeEmptyFields,
+    updateRemoteDatabase
   ],
   computed: {
     ...mapState({
@@ -93,11 +121,17 @@ export default {
     ...mapActions([
         'ADD_NEW_NOTE'
     ]),
+    refreshEndState(){
+      let parsed = JSON.stringify(this.newNote)
+      localStorage.setItem('endState', parsed)
+    },
     addTodo() {
       this.newNote.todos.push({name: '', checked: false})
+      this.refreshEndState()
     },
     deleteTodo(index) {
       this.newNote.todos.splice(index, 1)
+      this.refreshEndState()
     },
     refreshData(){
       this.newNote.id = null
@@ -110,23 +144,59 @@ export default {
         this.removeEmptyFields(this.newNote.todos)
 
         // create id
-        this.newNote.id = this.notes.length ? parseInt(this.notes[this.notes.length - 1].id) + 1 : 1
+        let id = 1
+        for(let i = 0; i < this.notes.length; i++){
+          if(this.notes[i].id === id){
+            id++
+            i = -1
+          }
+        }
 
+        this.newNote.id = id
+
+        // add to vuex
+        // TODO check it
         let load = {
           id: this.newNote.id,
           title: this.newNote.title,
           todos: this.newNote.todos
         }
-        // add to vuex
+        // console.log(load)
+        console.log(this.newNote.id)
         this.ADD_NEW_NOTE(load)
         this.refreshData()
-        // add to db.json
-        axios.post(consts.API_URL_NOTES, load)
-            .then((res) => {})
-            .catch((err) => {console.log('err: ', err)})
 
+        // add to db.json - if using a json-server
+        // axios.post(consts.API_URL_NOTES, load)
+        //     .then((res) => {})
+        //     .catch((err) => {console.log('err: ', err)})
+
+        // update a remote database: php + json
+        this.updateRemoteDatabase()
+        this.$router.push({name: 'home'})
       }
+    },
+    changeEndState(){
+      let parsed = JSON.stringify(this.newNote)
+      localStorage.setItem('endState', parsed)
+    },
+    undoTitle(){
+      this.newNote.title = ''
+    },
+    redoTitle(){
+      this.endState = JSON.parse(localStorage.getItem('endState'))
+      this.newNote.title = this.endState.title
+    },
+    undoItem(index){
+      this.newNote.todos[index].name = ''
+    },
+    redoItem(index){
+      this.endState = JSON.parse(localStorage.getItem('endState'))
+      this.newNote.todos[index].name = this.endState.todos[index].name
     }
+  },
+  mounted(){
+    this.refreshEndState()
   }
 }
 </script>
@@ -143,6 +213,17 @@ export default {
         label
           display: block
           margin-bottom: 10px
+        .wrap
+          display: grid
+          grid-template-columns: repeat(3, min-content)
+          grid-gap: 8px
+          align-items: center
+          .icon
+            cursor: pointer
+          .undoItem
+            color: $gray
+          .redoItem
+            color: $green
       .content
         .title
           font-size: 1rem
@@ -151,15 +232,20 @@ export default {
           margin-bottom: 30px
           .item
             display: grid
-            grid-template-columns: repeat(3, min-content)
+            grid-template-columns: repeat(5, min-content)
             grid-gap: 8px
             align-items: center
             margin-bottom: 10px
             input[type="checkbox"]
               cursor: pointer
+            .icon
+              cursor: pointer
             .removeItem
               color: $error
-              cursor: pointer
+            .undoItem
+              color: $gray
+            .redoItem
+              color: $green
         .buttons
           display: grid
           grid-template-columns: repeat(2, min-content)
