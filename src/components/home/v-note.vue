@@ -76,6 +76,7 @@ export default {
       this.SET_EDITING_NOTE(this.note)
       let parsed = JSON.stringify(this.note)
       localStorage.setItem('startState', parsed)
+      localStorage.setItem('middleState', parsed)
       localStorage.setItem('endState', parsed)
     },
     deleteNote(){

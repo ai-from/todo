@@ -20,8 +20,12 @@ export default {
   },
   beforeRouteLeave(to, from, next){
     let item = JSON.parse(localStorage.getItem('startState'))
-    this.UPDATE_NOTE(item)
+    if(item){
+      this.UPDATE_NOTE(item)
+      next()
+    }
     next()
+
   }
 }
 </script>

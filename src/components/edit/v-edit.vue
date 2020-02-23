@@ -161,21 +161,17 @@ export default {
     },
     addTodo() {
       this.localNote.todos.push({name: '', checked: false})
-      // this.refreshEndState()
-      // let notParsed = JSON.parse(localStorage.getItem('startState'))
-      // notParsed.todos.push({name: '', checked: false})
-      // this.localNote = notParsed
-      // let parsed = JSON.stringify(this.localNote)
-      // localStorage.setItem('startState', parsed)
+      this.refreshEndState()
+      let parsed = JSON.parse(localStorage.getItem('middleState'))
+      parsed.todos.push({name: '', checked: false})
+      localStorage.setItem('middleState', JSON.stringify(parsed))
     },
     deleteTodo(index) {
       this.localNote.todos.splice(index, 1)
-      // this.refreshEndState()
-      // let notParsed = JSON.parse(localStorage.getItem('startState'))
-      // notParsed.todos.splice(index, 1)
-      // this.localNote = notParsed
-      // let parsed = JSON.stringify(this.localNote)
-      // localStorage.setItem('startState', parsed)
+      this.refreshEndState()
+      let parsed = JSON.parse(localStorage.getItem('middleState'))
+      parsed.todos.splice(index, 1)
+      localStorage.setItem('middleState', JSON.stringify(parsed))
     },
     saveNote(){
       if (this.localNote.title.length > 0){
@@ -198,20 +194,20 @@ export default {
       this.SHOW_MODAL({mode: 'cancelChanges', obj: this.localNote})
     },
     changeEndState(){
-      // let parsed = JSON.stringify(this.localNote)
-      // localStorage.setItem('endState', parsed)
+      let parsed = JSON.stringify(this.localNote)
+      localStorage.setItem('endState', parsed)
     },
     undoTitle(){
-      this.startState = JSON.parse(localStorage.getItem('startState'))
-      this.localNote.title = this.startState.title
+      this.middleState = JSON.parse(localStorage.getItem('middleState'))
+      this.localNote.title = this.middleState.title
     },
     redoTitle(){
       this.endState = JSON.parse(localStorage.getItem('endState'))
       this.localNote.title = this.endState.title
     },
     undoItem(index){
-      this.startState = JSON.parse(localStorage.getItem('startState'))
-      this.localNote.todos[index].name = this.startState.todos[index].name
+      this.middleState = JSON.parse(localStorage.getItem('middleState'))
+      this.localNote.todos[index].name = this.middleState.todos[index].name
     },
     redoItem(index){
       this.endState = JSON.parse(localStorage.getItem('endState'))
