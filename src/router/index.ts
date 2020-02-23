@@ -8,22 +8,26 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: {title: 'TODO | Home'}
   },
   {
     path: '/create',
     name: 'create',
-    component: () => import('../views/Create.vue')
+    component: () => import('../views/Create.vue'),
+    meta: {title: 'TODO | Create'}
   },
   {
     path: '/edit',
     name: 'edit',
-    component: () => import('../views/Edit.vue')
+    component: () => import('../views/Edit.vue'),
+    meta: {title: 'TODO | Edit'}
   },
   {
     path: '/error',
     name: 'error',
-    component: () => import('../views/Error.vue')
+    component: () => import('../views/Error.vue'),
+    meta: {title: 'TODO | Error'}
   },
   {
     path: '*',
@@ -35,6 +39,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
 })
 
 export default router
