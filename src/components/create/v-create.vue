@@ -159,7 +159,6 @@ export default {
         }
         this.newNote.id = id
 
-        // TODO check it
         let load = {
           id: this.newNote.id,
           title: this.newNote.title,
