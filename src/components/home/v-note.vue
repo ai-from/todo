@@ -1,7 +1,5 @@
 <template>
-  <div
-      class="v-note"
-  >
+  <div class="v-note">
     <v-icon
         name="times"
         class="delete"
@@ -60,16 +58,16 @@ export default {
     }
   },
   computed: {
-      slicedTodos: function() {
+      slicedTodos() {
         return this.note.todos.slice(0, this.maxItemsInTodos)
       }
   },
   methods: {
-      ...mapActions([
-          'SET_EDIT_MODE',
-          'SET_EDITING_NOTE',
-          'SHOW_MODAL'
-      ]),
+    ...mapActions([
+        'SET_EDIT_MODE',
+        'SET_EDITING_NOTE',
+        'SHOW_MODAL'
+    ]),
     editNote(){
       this.$router.push({name: 'edit'})
       this.SET_EDIT_MODE(true)

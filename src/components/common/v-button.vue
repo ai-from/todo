@@ -6,7 +6,10 @@
     >
       <div class="inner_wrap">
         <span>{{ title }}</span>
-        <v-icon :name="icon" scale=".7" />
+        <v-icon
+            :name="icon"
+            scale=".7"
+        />
       </div>
     </button>
   </div>
@@ -30,12 +33,12 @@ export default {
     }
   },
   methods: {
-    btnClick: function () {
+    btnClick() {
       this.$emit('btnclick')
     }
   },
   computed: {
-    classNames: function(){
+    classNames(){
       return {
         'cancel': this.type === 'cancel',
         'error': this.type === 'error'

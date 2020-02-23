@@ -1,7 +1,7 @@
 <template>
   <div class="v-notes">
 
-    <template v-if="notes.length > 0">
+    <template v-if="isNotes">
       <div class="notes_items">
         <vNote
             v-for="(item, index) in itemsToShow"
@@ -25,7 +25,7 @@
 
 <script>
 
-import {mapState, mapActions} from 'vuex'
+import {mapState} from 'vuex'
 import vNote from '@/components/home/v-note'
 import vPagination from '@/components/common/v-pagination'
 
@@ -45,22 +45,22 @@ export default {
     ...mapState({
       notes: state => state.mNotes.notes
     }),
+    isNotes(){
+      return this.notes.length > 0 ? true: false
+    },
     itemsToShow() {
       let arr = this.notes
       return arr.slice(this.startFrom, this.startFrom + this.itemsOnPage)
     }
   },
   methods: {
-    ...mapActions([
-        'UPDATE_NOTE'
-    ]),
-    pageChange (index){
+    pageChange(index){
       this.startFrom = index * this.itemsOnPage
     }
   },
   watch: {
-    itemsToShow: function(){
-      // for pagination
+    itemsToShow(){
+      // pagination
       if ( (this.notes.length > this.itemsOnPage) && (this.itemsToShow.length === 0) ) {
         this.startFrom -= this.itemsOnPage
       } else if (this.notes.length === this.itemsOnPage) {

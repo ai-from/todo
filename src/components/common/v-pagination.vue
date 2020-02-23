@@ -1,13 +1,28 @@
 <template>
-  <div class="v-pagination" v-if="this.arrayButtons.length > 1 && !isNothingFound">
+  <div
+      class="v-pagination"
+      v-if="isPaginationShow"
+  >
     <div class="inner_wrapper">
 
-      <div class="btn btnLeft" v-if="this.arrayButtons.length > this.buttonsToShow">
-        <v-icon name="chevron-left" @click="arrowLeft" />
+      <div
+          class="btn btnLeft"
+          v-if="isArrowShow"
+      >
+        <v-icon
+            name="chevron-left"
+            @click="arrowLeft"
+        />
       </div>
 
-      <div class="items" :class="classNames">
-        <div class="items_wrapper" ref="btnItems">
+      <div
+          class="items"
+          :class="classNames"
+      >
+        <div
+            class="items_wrapper"
+            ref="btnItems"
+        >
           <div class="item"
                v-for="(item, index) in arrayButtons"
                :class="{active: item.name == activePage}"
@@ -19,8 +34,14 @@
         </div> <!-- inner_wrapper -->
       </div> <!-- items -->
 
-      <div class="btn btnRight" v-if="this.arrayButtons.length > this.buttonsToShow">
-        <v-icon name="chevron-right" @click="arrowRight" />
+      <div
+          class="btn btnRight"
+          v-if="isArrowShow"
+      >
+        <v-icon
+            name="chevron-right"
+            @click="arrowRight"
+        />
       </div>
 
     </div> <!-- inner_wrapper -->
@@ -65,7 +86,13 @@
           'more': this.arrayButtons.length > 4
         }
       },
-      arrayButtons: function () {
+      isPaginationShow(){
+        return this.arrayButtons.length > 1 && !this.isNothingFound ? true: false
+      },
+      isArrowShow(){
+        return this.arrayButtons.length > this.buttonsToShow ? true : false
+      },
+      arrayButtons() {
         var quantity = 0
         if (this.localItems.length % this.itemsOnPage > 0) {
           quantity = Math.floor(this.localItems.length / this.itemsOnPage) + 1
@@ -80,7 +107,7 @@
       }
     },
     methods: {
-      changePage: function (index) {
+      changePage(index) {
         this.activePage = index + 1
         this.$emit('pagechange', index)
       },
@@ -98,12 +125,12 @@
       }
     },
     watch: {
-      isFirstPage: function(newVal, oldVal){
+      isFirstPage(newVal, oldVal){
         if (newVal !== oldVal){
           this.changePage(0)
         }
       },
-      localItems: function(){
+      localItems(){
         if ( (this.localItems.length % this.itemsOnPage) === 0)
           this.activePage--
       }

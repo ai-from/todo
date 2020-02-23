@@ -23,9 +23,9 @@ export default {
     if(item){
       this.UPDATE_NOTE(item)
       next()
+    } else {
+      next()
     }
-    next()
-
   }
 }
 </script>

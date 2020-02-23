@@ -18,7 +18,8 @@
         </div>
         <div
             class="title"
-            v-else>
+            v-else
+        >
           Отменить изменения для текущей заметки?
         </div>
         <div class="note-name">{{ this.workingNote.title }}</div>
@@ -51,7 +52,7 @@
 
 <script>
 import {mapState, mapActions} from 'vuex'
-import updateRemoteDatabase from '@/mixins/updateRemoteDatabase'
+import updateDatabase from '@/mixins/updateDatabase'
 
 export default {
   name: "v-modal",
@@ -61,7 +62,7 @@ export default {
     }
   },
   mixins: [
-    updateRemoteDatabase
+    updateDatabase
   ],
   computed: {
       ...mapState({
@@ -76,7 +77,6 @@ export default {
   },
   methods: {
       ...mapActions([
-          'SET_MODAL',
           'CLOSE_MODAL',
           'DELETE_NOTE_BY_ID',
           'UPDATE_NOTE',
@@ -87,34 +87,16 @@ export default {
     },
     deleteNote(){
         this.DELETE_NOTE_BY_ID(this.workingNote.id)
-
-        // delete from db.json - if using a json-server
-        // axios.delete(consts.API_URL_NOTES + '/' + this.noteToDeleteId)
-        //   .then((res) => {})
-        //   .catch((err) => {console.log('err: ', err)})
-
-        // update a remote database: php + json
-        this.updateRemoteDatabase()
-
+        this.updateDatabase()
         this.CLOSE_MODAL()
-        if(this.$route.path !== '/'){
-          this.$router.push({name: 'home'})
-        }
+        if (this.$route.path !== '/') { this.$router.push({name: 'home'}) }
     },
     cancelChanges(){
       this.localNote = JSON.parse(localStorage.getItem('startState'))
       this.UPDATE_NOTE(this.localNote)
       this.UPDATE_LOCAL_NOTE()
       this.CLOSE_MODAL()
-      // edit db.json - if using a json-server
-      // axios.put(consts.API_URL_NOTES + '/' + this.localNote.id, this.localNote)
-      //     .then((res) => {})
-      //     .catch((err) => {console.log('err: ', err)})
-
-      // update a remote database: php + json
-      this.updateRemoteDatabase()
-
-
+      this.updateDatabase()
     }
   }
 }

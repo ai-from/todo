@@ -115,7 +115,7 @@
 import vCreate from '@/components/create/v-create'
 import {mapState, mapActions} from 'vuex'
 import removeEmptyFields from '@/mixins/removeEmptyFields'
-import updateRemoteDatabase from '@/mixins/updateRemoteDatabase'
+import updateDatabase from '@/mixins/updateDatabase'
 
 export default {
   name: "v-edit",
@@ -127,7 +127,7 @@ export default {
   },
   mixins: [
     removeEmptyFields,
-    updateRemoteDatabase
+    updateDatabase
   ],
   components: {
     vCreate
@@ -145,15 +145,6 @@ export default {
         'UPDATE_NOTE',
         'SHOW_MODAL'
     ]),
-    editItemInDB(){
-      // edit db.json - if using a json-server
-      // axios.put(consts.API_URL_NOTES + '/' + this.localNote.id, this.localNote)
-      //     .then((res) => {})
-      //     .catch((err) => {console.log('err: ', err)})
-
-      // update a remote database: php + json
-      this.updateRemoteDatabase()
-    },
     refreshEndState(){
       let parsed = JSON.stringify(this.localNote)
       localStorage.setItem('endState', parsed)
@@ -174,15 +165,12 @@ export default {
     },
     saveNote(){
       if (this.localNote.title.length > 0){
-        // remove empty fields
         this.removeEmptyFields(this.localNote.todos)
-
         this.UPDATE_NOTE(this.localNote)
         localStorage.clear()
         let parsed = JSON.stringify(this.localNote)
         localStorage.setItem('startState', parsed)
-        // edit db
-        this.editItemInDB()
+        this.updateDatabase()
         this.$router.push({name: 'home'})
       }
     },

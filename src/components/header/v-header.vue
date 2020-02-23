@@ -2,7 +2,14 @@
   <div class="v-header">
 
     <div class="header_inner indent">
-      <router-link class="home" exact to="/" title="На главную">TODO LIST</router-link>
+      <router-link
+          class="home"
+          exact
+          to="/"
+          title="На главную"
+      >
+        TODO LIST
+      </router-link>
       <v-button
           title="Создать заметку"
           class="create"

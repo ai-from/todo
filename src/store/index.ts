@@ -7,14 +7,10 @@ import mNotes from './modules/mNotes'
 import mModal from './modules/mModal'
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  getters: {
-  },
+  state: {},
+  mutations: {},
+  actions: {},
+  getters: {},
   modules: {
     mNotes,
     mModal

@@ -99,7 +99,7 @@
 <script>
 import {mapState, mapActions} from 'vuex'
 import removeEmptyFields from '@/mixins/removeEmptyFields'
-import updateRemoteDatabase from '@/mixins/updateRemoteDatabase'
+import updateDatabase from '@/mixins/updateDatabase'
 
 export default {
   name: "v-create",
@@ -117,7 +117,7 @@ export default {
   },
   mixins: [
     removeEmptyFields,
-    updateRemoteDatabase
+    updateDatabase
   ],
   computed: {
     ...mapState({
@@ -147,7 +147,6 @@ export default {
     },
     createNote(){
       if (this.newNote.title.length > 0){
-        // remove empty fields
         this.removeEmptyFields(this.newNote.todos)
 
         // create id
@@ -158,10 +157,8 @@ export default {
             i = -1
           }
         }
-
         this.newNote.id = id
 
-        // add to vuex
         // TODO check it
         let load = {
           id: this.newNote.id,
@@ -170,14 +167,7 @@ export default {
         }
         this.ADD_NEW_NOTE(load)
         this.refreshData()
-
-        // add to db.json - if using a json-server
-        // axios.post(consts.API_URL_NOTES, load)
-        //     .then((res) => {})
-        //     .catch((err) => {console.log('err: ', err)})
-
-        // update a remote database: php + json
-        this.updateRemoteDatabase()
+        this.updateDatabase()
         this.$router.push({name: 'home'})
       }
     },

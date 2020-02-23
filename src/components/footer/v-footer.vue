@@ -10,7 +10,7 @@
 export default {
   name: "v-footer",
   computed: {
-    currentYear: function () {
+    currentYear() {
       return new Date().getFullYear()
     }
   }
