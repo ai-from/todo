@@ -81,6 +81,13 @@
               class="create"
               @btnclick="createNote"
           />
+          <v-button
+              title="Очистить"
+              icon="times"
+              class="cleanChanges"
+              type="cancel"
+              @btnclick="cleanChanges"
+          />
         </div> <!-- buttons -->
       </div> <!-- content -->
 
@@ -161,8 +168,6 @@ export default {
           title: this.newNote.title,
           todos: this.newNote.todos
         }
-        // console.log(load)
-        console.log(this.newNote.id)
         this.ADD_NEW_NOTE(load)
         this.refreshData()
 
@@ -193,6 +198,9 @@ export default {
     redoItem(index){
       this.endState = JSON.parse(localStorage.getItem('endState'))
       this.newNote.todos[index].name = this.endState.todos[index].name
+    },
+    cleanChanges(){
+      this.refreshData()
     }
   },
   mounted(){

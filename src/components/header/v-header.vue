@@ -7,6 +7,7 @@
           title="Создать заметку"
           class="create"
           @btnclick="createNote"
+          v-if="showCreateBtn"
       />
     </div>
 
@@ -19,11 +20,17 @@ export default {
   name: "v-header",
   data() {
     return {
+      showCreateBtn: true
     }
   },
   methods: {
     createNote() {
       if (this.$route.path !== '/create') { this.$router.push({name: 'create'}) }
+    }
+  },
+  watch:{
+    '$route'(){
+      this.$route.path === '/create' ? this.showCreateBtn = false : this.showCreateBtn = true
     }
   }
 }

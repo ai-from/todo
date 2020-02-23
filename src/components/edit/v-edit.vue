@@ -143,8 +143,7 @@ export default {
   methods: {
     ...mapActions([
         'UPDATE_NOTE',
-        'SHOW_MODAL',
-        'UPDATE_LOCAL_NOTE'
+        'SHOW_MODAL'
     ]),
     editItemInDB(){
       // edit db.json - if using a json-server
@@ -221,12 +220,6 @@ export default {
     updateLocalNote(){
       this.localNote = JSON.parse(localStorage.getItem('startState'))
     }
-  },
-  beforeDestroy(){
-    // this.localNote = JSON.parse(localStorage.getItem('startState'))
-    // this.UPDATE_NOTE(this.localNote)
-    // this.updateRemoteDatabase()
-    // console.log(this.localNote)
   }
 }
 </script>
