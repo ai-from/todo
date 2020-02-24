@@ -1,6 +1,7 @@
 <template>
   <div class="v-button">
-    <button
+    <div
+        class="button"
         @click="btnClick"
         :class="classNames"
     >
@@ -11,7 +12,7 @@
             scale=".7"
         />
       </div>
-    </button>
+    </div>
   </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
     }
   },
   methods: {
-    btnClick() {
+    btnClick(){
       this.$emit('btnclick')
     }
   },
@@ -48,9 +49,9 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-button
-    button
+    .button
       border: none
       color: white
       background: $green
@@ -83,7 +84,7 @@ export default {
           background: $errorDark
   @media screen and (max-width: 400px)
     .v-button
-      button
-        padding: 10px 25px
+      .button
+        padding: 10px 20px
         width: 100%
 </style>

@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-note
     padding: 20px 30px
     border: 1px solid $gray

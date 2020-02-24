@@ -18,8 +18,6 @@ export default {
 }
 </script>
 
-<style lang="sass">
-  .home
-    .create
-      margin-bottom: 40px
+<style lang="sass" scoped>
+
 </style>

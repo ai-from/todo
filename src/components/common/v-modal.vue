@@ -32,14 +32,14 @@
           />
           <template v-if="deleteMode">
             <v-button
-                title="Да, удалить"
+                title="Удалить"
                 icon="check"
                 @btnclick="deleteNote"
             />
           </template>
           <template v-else>
             <v-button
-                title="Да, отменить"
+                title="Отменить"
                 icon="check"
                 @btnclick="cancelChanges"
             />
@@ -102,7 +102,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-modal-wrapper
     position: fixed
     background: rgba($gray, .5)
@@ -144,7 +144,7 @@ export default {
       padding: 8px
       .v-modal
         width: 100%
-        padding: 10px 20px 20px
+        padding: 10px 10px 20px
         .buttons
           grid-gap: 10px
 </style>

@@ -198,7 +198,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-create
     .title
       font-size: 1.3rem

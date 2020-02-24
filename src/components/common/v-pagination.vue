@@ -138,7 +138,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-pagination
     display: grid
     justify-items: center

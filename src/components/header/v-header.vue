@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-header
     padding: 30px 0
     .header_inner

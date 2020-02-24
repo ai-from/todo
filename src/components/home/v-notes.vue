@@ -71,7 +71,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-notes
     display: grid
     grid-template-rows: 1fr min-content

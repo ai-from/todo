@@ -212,7 +212,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-edit
     .title
       font-size: 1.3rem

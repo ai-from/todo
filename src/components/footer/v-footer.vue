@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .v-footer
     background: $gray
     padding: 30px 0
