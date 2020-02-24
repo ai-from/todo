@@ -82,11 +82,11 @@
               @btnclick="createNote"
           />
           <v-button
-              title="Очистить"
+              title="Сбросить"
               icon="times"
-              class="cleanChanges"
+              class="resetChanges"
               type="cancel"
-              @btnclick="cleanChanges"
+              @btnclick="resetChanges"
           />
         </div> <!-- buttons -->
       </div> <!-- content -->
@@ -188,7 +188,7 @@ export default {
       this.endState = JSON.parse(localStorage.getItem('endState'))
       this.newNote.todos[index].name = this.endState.todos[index].name
     },
-    cleanChanges(){
+    resetChanges(){
       this.refreshData()
     }
   },

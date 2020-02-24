@@ -10,42 +10,28 @@
             name="times"
             @click="closeModal"
         />
-        <div
-            class="title"
-            v-if="deleteMode"
-        >
-          Вы уверены, что хотите удалить эту заметку?
+
+        <div class="title">
+          {{ this.currentMode.title }}
         </div>
-        <div
-            class="title"
-            v-else
-        >
-          Отменить изменения для текущей заметки?
-        </div>
+
         <div class="note-name">{{ this.workingNote.title }}</div>
+
         <div class="buttons">
           <v-button
-            title="Отмена"
-            icon="times"
-            type="cancel"
-            @btnclick="closeModal"
+              :title = btnCancel.title
+              :icon = btnCancel.icon
+              :type = btnCancel.type
+              @btnclick = btnCancel.event
           />
-          <template v-if="deleteMode">
-            <v-button
-                title="Удалить"
-                icon="check"
-                @btnclick="deleteNote"
-            />
-          </template>
-          <template v-else>
-            <v-button
-                title="Отменить"
-                icon="check"
-                @btnclick="cancelChanges"
-            />
-          </template>
-
+          <v-button
+              :title = currentMode.button.title
+              :icon = currentMode.button.icon
+              :type = currentMode.button.type
+              @btnclick = currentMode.button.event
+          />
         </div>
+
     </div>
   </div>
 </template>
@@ -58,7 +44,18 @@ export default {
   name: "v-modal",
   data(){
     return {
-      localNote: null
+      localNote: null,
+      btnCancel: {title: 'Нет', icon: 'times', type: 'cancel', event: this.closeModal},
+      modalMode: {
+        deleteMode: {
+          title: 'Вы уверены, что хотите удалить эту заметку?',
+          button: {title: 'Да', icon: 'check', type: '', event: this.deleteNote}
+        },
+        cancelMode: {
+          title: 'Отменить изменения для текущей заметки?',
+          button: {title: 'Да', icon: 'check', type: '', event: this.cancelChanges}
+        }
+      }
     }
   },
   mixins: [
@@ -73,6 +70,13 @@ export default {
       }),
       deleteMode(){
         return this.mode === 'deleteNote' ? true : false
+      },
+      currentMode(){
+        if (this.mode === 'deleteNote'){
+          return this.modalMode.deleteMode
+        } else{
+          return this.modalMode.cancelMode
+        }
       }
   },
   methods: {
