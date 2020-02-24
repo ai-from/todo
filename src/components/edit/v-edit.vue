@@ -61,7 +61,7 @@
                   v-model="todo.checked"
               />
               <v-icon
-                  name="minus"
+                  name="times"
                   @click="deleteTodo(index)"
                   class="icon removeItem"
                   title="Удалить"
