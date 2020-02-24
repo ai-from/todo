@@ -35,9 +35,11 @@ export default {
       if (this.$route.path !== '/create') { this.$router.push({name: 'create'}) }
     }
   },
-  watch:{
-    '$route'(){
-      this.$route.path === '/create' ? this.showCreateBtn = false : this.showCreateBtn = true
+  watch: {
+    $route: {
+      handler() {
+        this.$route.path === '/create' ? this.showCreateBtn = false : this.showCreateBtn = true
+      }
     }
   }
 }
