@@ -1,5 +1,5 @@
-const API_URL_NOTES = 'http://todo.just.ru.net/api/notes.php'
-const API_URL_UPDATE_NOTES = 'http://todo.just.ru.net/api/updateNotes.php'
+const API_URL_NOTES = 'https://todo.just.ru.net/api/notes.php'
+const API_URL_UPDATE_NOTES = 'https://todo.just.ru.net/api/updateNotes.php'
 
 export default {
   API_URL_NOTES,
