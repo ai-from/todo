@@ -54,7 +54,7 @@ export default {
   name: "v-note",
   data() {
     return {
-      maxItemsInTodos: 5
+      maxItemsInTodos: Infinity
     }
   },
   props: {
