@@ -10,24 +10,30 @@
       <div class="title">{{ this.note.title }}</div>
       <div class="todos">
 
-        <div
+        <template v-if="slicedTodos.length">
+          <div
             class="todo"
             v-for="(todo, index) in slicedTodos"
             :key="index"
-        >
-          <label
-              class="name"
-              :for="`todo_id_${note.id}_${index}`"
           >
-            {{ todo.name }}
-          </label>
-          <input
-              :id="`todo_id_${note.id}_${index}`"
-              type="checkbox"
-              :checked="todo.checked"
-              disabled="false"
-          >
-        </div>
+            <label
+                class="name"
+                :for="`todo_id_${note.id}_${index}`"
+            >
+              {{ todo.name }}
+            </label>
+            <input
+                :id="`todo_id_${note.id}_${index}`"
+                type="checkbox"
+                :checked="todo.checked"
+                disabled="false"
+            >
+          </div>
+        </template>
+        
+        <template v-else>
+          No notes
+        </template>
 
       </div> <!-- todos -->
 
@@ -108,10 +114,10 @@ export default {
         text-overflow: ellipsis
       .todos
         margin-bottom: 20px
-        height: 140px
-        min-height: 140px
-        max-height: 140px
-        overflow: hidden
+        height: 150px
+        min-height: 150px
+        max-height: 150px
+        overflow: auto
         .todo
           display: grid
           grid-template-columns: 1fr min-content

@@ -98,6 +98,7 @@
 
 <script>
 import {mapState, mapActions} from 'vuex'
+import checkField from '@/mixins/checkField'
 import removeEmptyFields from '@/mixins/removeEmptyFields'
 import updateDatabase from '@/mixins/updateDatabase'
 
@@ -116,6 +117,7 @@ export default {
     }
   },
   mixins: [
+    checkField,
     removeEmptyFields,
     updateDatabase
   ],
@@ -146,7 +148,7 @@ export default {
       this.newNote.todos = [{name: '', checked: false}]
     },
     createNote(){
-      if (this.newNote.title.length > 0){
+      if (this.checkField(this.newNote.title)){
         this.removeEmptyFields(this.newNote.todos)
 
         // create id
@@ -161,7 +163,7 @@ export default {
 
         let load = {
           id: this.newNote.id,
-          title: this.newNote.title,
+          title: this.newNote.title.trim(),
           todos: this.newNote.todos
         }
         this.ADD_NEW_NOTE(load)
